@@ -34,35 +34,98 @@ function toggleCart() {
 
 function addToCart(id) {
     const plato = sushiMenu.find(p => p.id === id);
-    cart.push(plato);
+    const itemEnCarrito = cart.find(p => p.id === id);
+
+    if (itemEnCarrito) {
+        itemEnCarrito.cantidad++;
+    } else {
+        cart.push({ ...plato, cantidad: 1 });
+    }
+    
     updateCart();
 
-    // Encontrar el botón que activó el evento
+    // Feedback visual del botón (tu código existente)
     const btn = event.target;
     const originalContent = btn.innerHTML;
-
-    // Cambiar estado a "Añadido"
     btn.classList.add('btn-added');
     btn.innerHTML = `<span>✔ Añadido</span>`;
-    btn.disabled = true; // Evita clics accidentales durante la animación
-
-    // Volver al estado original tras 1.5 segundos
+    btn.disabled = true;
     setTimeout(() => {
         btn.classList.remove('btn-added');
         btn.innerHTML = originalContent;
         btn.disabled = false;
     }, 1500);
 
-    // Abrir el carrito automáticamente si está oculto
     if(document.getElementById('side-cart').classList.contains('cart-hidden')) {
         toggleCart();
     }
 }
+
 function updateCart() {
-    document.getElementById('cart-count').innerText = cart.length;
+    const cartCount = cart.reduce((acc, item) => acc + item.cantidad, 0);
+    document.getElementById('cart-count').innerText = cartCount;
+    
     const itemsContainer = document.getElementById('cart-items');
-    itemsContainer.innerHTML = cart.map(i => `<div class="cart-item"><span>${i.name}</span> <span>$${i.price}</span></div>`).join('');
-    const total = cart.reduce((acc, curr) => acc + curr.price, 0);
+    
+    itemsContainer.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <div class="cart-item-info">
+                <span class="item-name">${item.name}</span>
+                <span class="item-price">$${(item.price * item.cantidad)}</span>
+            </div>
+            <div class="cart-item-controls">
+                <button onclick="changeQuantity(${item.id}, -1)" class="btn-qty">-</button>
+                <span class="qty-num">${item.cantidad}</span>
+                <button onclick="changeQuantity(${item.id}, 1)" class="btn-qty">+</button>
+                <button onclick="removeFromCart(${item.id})" class="btn-remove">🗑️</button>
+            </div>
+        </div>
+    `).join('');
+
+    const total = cart.reduce((acc, curr) => acc + (curr.price * curr.cantidad), 0);
+    document.getElementById('total-price').innerText = total;
+}
+
+// 3. Función para sumar/restar
+function changeQuantity(id, delta) {
+    const item = cart.find(p => p.id === id);
+    if (item) {
+        item.cantidad += delta;
+        if (item.cantidad <= 0) {
+            removeFromCart(id);
+        } else {
+            updateCart();
+        }
+    }
+}
+
+// 4. Función para eliminar completamente
+function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id);
+    updateCart();
+}
+function updateCart() {
+    const cartCount = cart.reduce((acc, item) => acc + item.cantidad, 0);
+    document.getElementById('cart-count').innerText = cartCount;
+    
+    const itemsContainer = document.getElementById('cart-items');
+    
+    itemsContainer.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <div class="cart-item-info">
+                <span class="item-name">${item.name}</span>
+                <span class="item-price">$${(item.price * item.cantidad)}</span>
+            </div>
+            <div class="cart-item-controls">
+                <button onclick="changeQuantity(${item.id}, -1)" class="btn-qty">-</button>
+                <span class="qty-num">${item.cantidad}</span>
+                <button onclick="changeQuantity(${item.id}, 1)" class="btn-qty">+</button>
+                <button onclick="removeFromCart(${item.id})" class="btn-remove">🗑️</button>
+            </div>
+        </div>
+    `).join('');
+
+    const total = cart.reduce((acc, curr) => acc + (curr.price * curr.cantidad), 0);
     document.getElementById('total-price').innerText = total;
 }
 // Función principal para iniciar el proceso
