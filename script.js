@@ -299,5 +299,5 @@ function cargarPromociones() {
     slider.innerHTML = htmlPromos;
 }
 
-// Ejecutar la función cuando cargue la página
+// Ejecutar la función cuando cargue la página. 
 window.addEventListener('DOMContentLoaded', cargarPromociones);
