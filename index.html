@@ -23,7 +23,6 @@
     </header>
 
     <section class="hero">
-        <h1>Gastronomía Japonesa de Autor</h1>
     </section>
 
     <section id="menu">
@@ -32,26 +31,58 @@
     </section>
 
     <section id="reserva">
-        <div class="reserva-container">
-            <h2>Reserva tu Mesa</h2>
-            <form id="reserva-form">
-                <input type="text" placeholder="Nombre completo" required>
+    <div class="reserva-card">
+        <div class="reserva-info">
+            <h2>Reserva tu Experiencia</h2>
+            <p>Disfruta de la mejor gastronomía japonesa de autor en Caracas.</p>
+        </div>
+        <form id="reserva-form">
+            <div class="form-group-row">
+                <input type="text" placeholder="👤 Nombre completo" required>
+                <select>
+                    <option value="1">👥 1 Persona</option>
+                    <option value="2">👥 2 Personas</option>
+                    <option value="4">👥 4 Personas</option>
+                    <option value="6">👥 6+ Personas</option>
+                </select>
+            </div>
+            <div class="form-group-row">
                 <input type="date" required>
                 <input type="time" required>
-                <select>
-                    <option value="1">1 Persona</option>
-                    <option value="2">2 Personas</option>
-                    <option value="4">4 Personas</option>
-                </select>
-                <button type="submit">Confirmar Reserva</button>
-            </form>
-        </div>
-    </section>
+            </div>
+            <button type="submit" class="btn-reserva">Confirmar Mesa</button>
+        </form>
+    </div>
+</section>
+
+    <div id="payment-modal" class="modal-hidden">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closePaymentModal()">×</span>
+        <h2>Simulación de Pago (C2P)</h2>
+        <p id="amount-to-pay"></p>
+        
+        <form id="simulated-payment-form">
+            <select id="sim-bank" required>
+                <option value="">Seleccione su banco</option>
+                <option value="0102">Banco de Venezuela</option>
+                <option value="0105">Mercantil</option>
+                <option value="0108">Provincial</option>
+            </select>
+            <input type="text" id="sim-phone" placeholder="Teléfono (Ej: 04121234567)" required>
+            <input type="text" id="sim-id" placeholder="Cédula (Ej: V12345678)" required>
+            <input type="password" id="sim-otp" placeholder="Clave dinámica (OTP)" required>
+            <button type="submit" id="confirm-pay-btn">Confirmar Pago</button>
+        </form>
+
+        <div id="payment-result" class="hidden">
+            </div>
+    </div>
+</div>
 
     <section id="ubicacion">
         <h2>Encuéntranos</h2>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62758.55325852277!2d-66.93043815136719!3d10.48858970000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a58adcd8240a9%3A0x882ef13db054e88a!2sCaracas%2C%20Distrito%20Capital!5e0!3m2!1ses-419!2sve!4v1700000000000!5m2!1ses-419!2sve" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.334498757669!2d-66.9522003!3d10.4742751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5f1c6ce1a2d3%3A0x6e16f51be0e743a2!2sSushi%20Roll%20Caracas!5e0!3m2!1ses!2sve!4v1775600274815!5m2!1ses!2sve" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
@@ -63,18 +94,23 @@
         <div id="cart-items"></div>
         <div class="cart-footer">
             <h3>Total: $<span id="total-price">0</span></h3>
-            <button id="checkout-btn" onclick="startCheckout()">Pagar con Mercado Pago</button>
+            <button id="checkout-btn" onclick="startCheckout()">Realizar pago</button>
         </div>
     </aside>
 
+
     <footer>
         <p>&copy; 2026 SUSHI ROLL CARACAS</p>
-        <div class="footer-social">
-            <a href="https://github.com" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="30">
+        <div class="Link-container"> </div>
+
+            <a href="https://github.com/JuanCarlos-prgd" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Link to my GitHub" width="30">
             </a>
-        </div>
     </footer>
+
+    <button id="theme-toggle" class="fab-theme" onclick="toggleTheme()">
+    <span id="theme-icon">🌙</span>
+</button>
 
     <script src="script.js"></script>
 </body>
