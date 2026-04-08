@@ -86,8 +86,7 @@ body {
 
 .hero {
     height: 60vh; 
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-    url('https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.1&permmsgid=msg-f:1861775898243634525&th=19d65b50ba32155d&view=fimg&fur=ip&permmsgid=msg-f:1861775898243634525&sz=s0-l75-ft&attbid=ANGjdJ_zMNLEvCm4GkJ2GaiWzxli-vpJrAZV67pWJXn0iFTUxKjtpFx60HmLfI8ZM43whE0ZaDAIqm9hn5GXdj2J81KoZuftve3sNj_Ipq8Wx__DI08JYmhcu15oitU&disp=emb&realattid=ii_19d65b4d0dc1baa84ec1&zw');
+    background:  linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(img/background.jpeg);
     background-size: cover; 
     background-position: center;
     display: flex; 
