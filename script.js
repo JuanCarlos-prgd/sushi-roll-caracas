@@ -267,18 +267,19 @@ function scrollPromos(direction) {
         behavior: 'smooth'
     });
 }
-const promocionesData = [
-    { id: 101, name: "Promo 60 PZAS", price: 27, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.1&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12014243e6f8&zw", tag: "2x1" },
-    { id: 102, name: "Promo 100 PZAS", price: 42, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.2&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12039aedc194&zw", tag: "-20%" },
-    { id: 103, name: "Promo 48 PZAS + 1REF. De 1LT", price: 27, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.3&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12014406d719&zw", tag: "Popular" },
-    { id: 104, name: "Promo Cono Sushi 3 PZAS", price: 6,  img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.4&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af1203b2b56b41&zw", tag: "Nuevo" },
-    { id: 105, name: "Promo Roll 22 PZAS", price: 17, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.5&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12039e73a1d2&zw", tag: "2x1" },
-    { id: 106, name: "Promo 48 PZAS", price: 22, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.6&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af120145c9c737&zw", tag: "Sushiman" },
-    { id: 107, name: "Promo 28 PZAS", price: 18, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.7&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12013ebe06bb&zw", tag: "-10%" },
-    { id: 108, name: "Promo Ari 10 PZAS", price: 9, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.8&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12039767e156&zw", tag: "Flash" },
-    { id: 109, name: "Promo 24 PZAS Frios + 1REF. Bombita", price: 13, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.9&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12039cb0b1b3&zw", tag: "Premium" },
-    { id: 110, name: "Promo 80 PZAS ", price: 32,img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.11&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af1203992ad175&zw", tag: "-20%" }
-];
+
+    const promocionesData = [
+        { id: 101, name: "Promo 60 PZAS", price: 27, img: "img/promo60.jpg", tag: "2x1" },
+        { id: 102, name: "Promo 100 PZAS", price: 42, img: "img/promo100.jpg", tag: "-20%" },
+        { id: 103, name: "Promo 48 PZAS + 1REF. De 1LT", price: 27, img: "img/promo481.jpg", tag: "Popular" },
+        { id: 104, name: "Promo Cono Sushi 3 PZAS", price: 6,  img: "img/cono.jpg", tag: "Nuevo" },
+        { id: 105, name: "Promo Roll 22 PZAS", price: 17, img: "img/promo22.jpg", tag: "2x1" },
+        { id: 106, name: "Promo 48 PZAS", price: 22, img: "img/promo48.jpg", tag: "Sushiman" },
+        { id: 107, name: "Promo 28 PZAS", price: 18, img: "img/promo28.jpg", tag: "-10%" },
+        { id: 108, name: "Promo Ari 10 PZAS", price: 9, img: "img/promoari.jpg", tag: "Flash" },
+        { id: 109, name: "Promo 24 PZAS Frios + 1REF. Bombita", price: 13, img: "img/promo24bom.jpg", tag: "Premium" },
+        { id: 110, name: "Promo 80 PZAS ", price: 32,img: "img/promo80.jpg", tag: "-20%" }
+    ];
 
 function cargarPromociones() {
     const slider = document.getElementById('promo-slider');
