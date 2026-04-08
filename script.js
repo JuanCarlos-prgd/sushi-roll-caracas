@@ -1,5 +1,5 @@
 const sushiMenu = [
-    { id: 1, name: "Nigiri Salmón Tradicional", price: 12, img: "https://images.unsplash.com/photo-1583623025817-d180a2221d0a?w=600" },
+    { id: 1, name: "Nigiri Salmón", price: 12, img: "https://images.unsplash.com/photo-1583623025817-d180a2221d0a?w=600" },
     { id: 2, name: "Dragon Roll Especial", price: 16, img: "https://images.unsplash.com/photo-1617196034183-421b4917c92d?w=600" },
     { id: 3, name: "California Dream", price: 11, img: "https://images.unsplash.com/photo-1559466273-d95e72debaf8?w=600" },
     { id: 4, name: "Philadelphia Roll", price: 13, img: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=600" },
@@ -213,3 +213,85 @@ window.onload = () => {
         document.getElementById('theme-icon').innerText = '☀️';
     }
 };
+
+// Añade este bloque al final de tu archivo script.js
+
+document.getElementById('reserva-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const form = document.getElementById('reserva-form');
+    const successMsg = document.getElementById('reserva-success');
+    const btn = form.querySelector('.btn-reserva');
+
+    // Efecto visual de carga
+    btn.innerText = "Confirmando...";
+    btn.disabled = true;
+
+    // Simulación de envío de datos (1.5 segundos)
+    setTimeout(() => {
+        form.classList.add('hidden'); // Oculta el formulario
+        successMsg.classList.remove('hidden'); // Muestra el mensaje de éxito
+        
+        // Opcional: Hacer scroll suave hacia el mensaje
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1500);
+});
+
+// Función para permitir al usuario volver a reservar sin recargar la página
+function resetReserva() {
+    const form = document.getElementById('reserva-form');
+    const successMsg = document.getElementById('reserva-success');
+    
+    form.reset();
+    form.classList.remove('hidden');
+    successMsg.classList.add('hidden');
+    
+    const btn = form.querySelector('.btn-reserva');
+    btn.innerText = "Confirmar Mesa";
+    btn.disabled = false;
+}
+
+function scrollPromos(direction) {
+    const slider = document.getElementById('promo-slider');
+    // Calculamos el ancho de una tarjeta para que el scroll sea exacto
+    const cardWidth = slider.querySelector('.promo-card').offsetWidth + 20; 
+    
+    slider.scrollBy({
+        left: direction * cardWidth,
+        behavior: 'smooth'
+    });
+}
+const promocionesData = [
+    { id: 101, name: "Promo 60 PZAS", price: 27, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.1&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12014243e6f8&zw", tag: "2x1" },
+    { id: 102, name: "Promo 100 PZAS", price: 42, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.2&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12039aedc194&zw", tag: "-20%" },
+    { id: 103, name: "Promo 48 PZAS + 1REF. De 1LT", price: 27, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.3&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12014406d719&zw", tag: "Popular" },
+    { id: 104, name: "Promo Cono Sushi 3 PZAS", price: 6,  img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.4&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af1203b2b56b41&zw", tag: "Nuevo" },
+    { id: 105, name: "Promo Roll 22 PZAS", price: 17, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.5&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12039e73a1d2&zw", tag: "2x1" },
+    { id: 106, name: "Promo 48 PZAS", price: 22, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.6&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af120145c9c737&zw", tag: "Sushiman" },
+    { id: 107, name: "Promo 28 PZAS", price: 18, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.7&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12013ebe06bb&zw", tag: "-10%" },
+    { id: 108, name: "Promo Ari 10 PZAS", price: 9, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.8&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12039767e156&zw", tag: "Flash" },
+    { id: 109, name: "Promo 24 PZAS Frios + 1REF. Bombita", price: 13, img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.9&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af12039cb0b1b3&zw", tag: "Premium" },
+    { id: 110, name: "Promo 80 PZAS ", price: 32,img: "https://mail.google.com/mail/u/0?ui=2&ik=4259423ffb&attid=0.11&permmsgid=msg-a:r3642272035389415170&th=19d6b2b1651218c2&view=att&disp=safe&realattid=19d6b2af1203992ad175&zw", tag: "-20%" }
+];
+
+function cargarPromociones() {
+    const slider = document.getElementById('promo-slider');
+    
+    // Generar el HTML para cada plato
+    const htmlPromos = promocionesData.map(promo => `
+        <div class="promo-card">
+            <div class="promo-badge">${promo.tag}</div>
+            <img src="${promo.img}" alt="${promo.name}">
+            <div class="promo-info">
+                <h3>${promo.name}</h3>
+                <span class="promo-price">$${promo.price.toFixed(2)}</span>
+                <button class="btn-add" onclick="addToCart(${promo.id})">Aprovechar</button>
+            </div>
+        </div>
+    `).join('');
+
+    slider.innerHTML = htmlPromos;
+}
+
+// Ejecutar la función cuando cargue la página
+window.addEventListener('DOMContentLoaded', cargarPromociones);

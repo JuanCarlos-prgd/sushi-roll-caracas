@@ -31,10 +31,31 @@
     <section class="hero">
     </section>
 
-    <section id="menu">
-        <h2 class="section-title">Nuestro Menú</h2>
-        <div id="menu-grid"></div>
-    </section>
+    <div class="announcement-bar">
+    <div class="scrolling-text">
+        <span>🎫 Por tu 3ra compra obtienes un cupón con el 10% de descuento en tu siguiente compra. </span>
+        <span>🛵 Dos compras en una misma semana y obtén delivery gratis en tu segunda orden </span>
+        <span>🍹 ⁠un mojito gratis en nuestro local si ya has realizado 6 órdenes online. </span>
+        <span>🎫 Por tu 3ra compra obtienes un cupón con el 10% de descuento en tu siguiente compra. </span>
+        <span>🛵 Dos compras en una misma semana y obtén delivery gratis en tu segunda orden </span>
+        <span>🍹 ⁠un mojito gratis en nuestro local si ya has realizado 6 órdenes online. </span>
+    </div>
+</div>
+
+<section id="promociones" class="promo-section">
+    <h2 class="section-title">Ofertas Especiales</h2>
+    <div class="promo-container">
+        <button class="nav-btn prev" onclick="scrollPromos(-1)">❮</button>
+        <button class="nav-btn next" onclick="scrollPromos(1)">❯</button>
+        
+        <div class="promo-slider" id="promo-slider"></div>
+    </div>
+</section>
+<section id="menu">
+    <h2 class="section-title">Nuestro Menú</h2>
+    <div id="menu-grid"></div>
+</section>
+
 
     <section id="reserva">
     <div class="reserva-card">
@@ -58,8 +79,17 @@
             </div>
             <button type="submit" class="btn-reserva">Confirmar Mesa</button>
         </form>
+        <div id="reserva-success" class="hidden">
+            <div class="success-content">
+                <span class="success-icon">✅</span>
+                <h3>¡Reserva Exitosa!</h3>
+                <p>Tu mesa en <strong>Sushi Roll Caracas</strong> ha sido apartada.</p>
+                <button onclick="resetFormReserva()" class="btn-qty" style="width: auto; padding: 10px 20px; margin-top: 15px;">Hacer otra reserva</button>
+            </div>
     </div>
 </section>
+
+
 
     <div id="payment-modal" class="modal-hidden">
     <div class="modal-content">

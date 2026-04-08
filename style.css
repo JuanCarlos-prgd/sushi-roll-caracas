@@ -104,11 +104,22 @@ body {
     gap: 30px;
 }
 
-.card { 
-    background: var(--card-bg); /* Cambia 'white' por la variable */
-    border-radius: 12px; 
-    overflow: hidden; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+.card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Movimiento elástico */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+
+/* EFECTO AL PASAR EL MOUSE */
+.card:hover {
+    transform: translateY(-12px) scale(1.02); /* Se eleva y crece un poco */
+    border-color: var(--gold); /* El borde se ilumina en rojo */
+    box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2); /* Sombra difusa roja */
 }
 
 .card img { 
@@ -340,14 +351,93 @@ h2 {
     background: #222; 
     letter-spacing: 1px; }
 
-/* Adaptación móvil */
-@media (max-width: 600px) {
-    .form-group-row { 
-        grid-template-columns: 1fr; 
+/* --- Ajustes Globales de Fluidez --- */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Navegación Responsive --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 5%;
     }
-    .reserva-card { 
-        padding: 30px 20px; 
+    
+    .nav-links {
+        display: none; /* Oculta enlaces de texto en móviles para priorizar el logo y carrito */
     }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+}
+
+/* --- Hero Section Adaptativo --- */
+.hero {
+    height: 60vh;
+    min-height: 400px;
+    padding: 0 5%;
+    text-align: center;
+}
+
+/* --- Grid de Menú Inteligente --- */
+#menu-grid {
+    display: grid;
+    padding: 40px 5%;
+    /* Ajusta automáticamente el número de columnas según el ancho */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px;
+}
+
+/* --- Carrito Lateral (Responsive) --- */
+#side-cart {
+    width: 100%; /* Por defecto ocupa todo el ancho en móviles */
+    max-width: 380px; /* Pero no más de 380px en pantallas grandes */
+}
+
+/* --- Formulario de Reserva y Modal --- */
+.reserva-card {
+    width: 95%;
+    padding: 30px 20px;
+}
+
+.form-group-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Pantallas muy pequeñas (Móviles verticales) */
+@media (max-width: 480px) {
+    .form-group-row {
+        grid-template-columns: 1fr; /* Una columna por fila */
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+}
+
+/* --- Mapa de Google Responsive --- */
+.map-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    margin: 0 5% 50px;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* Botón base */
@@ -574,4 +664,140 @@ footer img:hover {
 .btn-remove:hover {
     filter: grayscale(0);
     transform: scale(1.1);
+}
+
+.announcement-bar {
+    background-color: var(--gold);
+    color: white;
+    overflow: hidden;
+    padding: 12px 0;
+    white-space: nowrap;
+    position: relative;
+    /* Añadimos margen para separar de la sección Hero */
+    margin-top: 20px; 
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.scrolling-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 50s linear infinite;
+}
+
+.scrolling-text span {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-right: 60px; /* Espacio entre cada repetición */
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Pausa la animación cuando el usuario interactúa */
+.announcement-bar:hover .scrolling-text {
+    animation-play-state: paused;
+}
+
+/* Si aún no tienes esta clase en tu CSS, añádela */
+.hidden {
+    display: none !important;
+}
+
+/* --- Estilos del Carrusel de Promociones --- */
+.promo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.promo-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    scrollbar-width: none; /* Firefox */
+}
+
+.promo-slider::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.promo-card {
+    min-width: 280px; 
+    flex: 0 0 auto;
+    background: var(--card-bg);
+    border-radius: 15px;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden; /* Importante para los bordes de la imagen */
+    position: relative;
+}
+
+.promo-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+/* Estilos internos de la tarjeta de promo */
+.promo-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.promo-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.promo-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--gold);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* Botones de Navegación */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--gold);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 5;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover { background: var(--dark); }
+.prev { left: 0; }
+.next { right: 0; }
+
+@media (max-width: 768px) {
+    .nav-btn { display: none; } 
+    .promo-container { padding: 0 10px; }
 }
