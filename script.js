@@ -169,7 +169,7 @@ document.getElementById('simulated-payment-form').addEventListener('submit', fun
         resultDiv.innerHTML = `
             <div style="text-align: center; padding: 20px;">
                 <h1 style="color: #28a745;">✅ ¡Gracias por tu compra!</h1>
-                <p>Tu pedido de sushi ya está en camino.</p>
+                <p>Tu pedido ya está en camino.</p>
                 <hr>
                 <p><strong>Referencia:</strong> #${ref}</p>
                 <p><strong>Estado:</strong> Aprobado</p>
